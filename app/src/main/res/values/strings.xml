@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PlanNetTestApp</string>
+    <string name="see_product_details_for">See product details for %1$s</string>
+    <string name="navigate_back">Navigate back</string>
+    <string name="retry">Retry</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="error_occurred">Error Occurred</string>
 </resources>
