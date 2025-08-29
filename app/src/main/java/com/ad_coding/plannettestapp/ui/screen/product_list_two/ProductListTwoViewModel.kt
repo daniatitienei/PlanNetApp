@@ -43,6 +43,9 @@ class ProductListTwoViewModel @Inject constructor(
         when (event) {
             ProductListTwoEvent.RefreshList ->
                 viewModelScope.launch {
+                    _state.update {
+                        it.copy(isRefreshing = true)
+                    }
                     refreshUseCase.requestRefresh()
                 }
 
@@ -70,6 +73,7 @@ class ProductListTwoViewModel @Inject constructor(
                         _state.update {
                             it.copy(
                                 isLoading = false,
+                                isRefreshing = false,
                                 errorMessage = result.error
                             )
                         }
@@ -79,6 +83,7 @@ class ProductListTwoViewModel @Inject constructor(
                         _state.update {
                             it.copy(
                                 isLoading = false,
+                                isRefreshing = false,
                                 productList = result.data ?: emptyList()
                             )
                         }

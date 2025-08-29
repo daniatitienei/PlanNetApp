@@ -35,7 +35,8 @@ fun GradeListScreen(
         )
 
         PullToRefresh(
-            isRefreshing = state.isLoading,
+            isRefreshing = state.isRefreshing,
+            isLoading = state.isLoading,
             onRefresh = {
                 onEvent(GradeListEvent.RefreshList)
             }

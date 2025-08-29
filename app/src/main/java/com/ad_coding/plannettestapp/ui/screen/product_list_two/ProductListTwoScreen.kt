@@ -25,7 +25,8 @@ fun ProductListTwoScreen(
 ) {
     Scaffold { innerPadding ->
         PullToRefresh(
-            isRefreshing = state.isLoading,
+            isRefreshing = state.isRefreshing,
+            isLoading = state.isLoading,
             onRefresh = {
                 onEvent(ProductListTwoEvent.RefreshList)
             }
