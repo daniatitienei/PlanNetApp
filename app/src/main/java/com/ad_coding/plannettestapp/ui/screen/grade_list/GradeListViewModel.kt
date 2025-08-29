@@ -43,6 +43,9 @@ class GradeListViewModel @Inject constructor(
         when (event) {
             GradeListEvent.RefreshList ->
                 viewModelScope.launch {
+                    _state.update {
+                        it.copy(isRefreshing = true)
+                    }
                     refreshUseCase.requestRefresh()
                 }
 
@@ -68,7 +71,8 @@ class GradeListViewModel @Inject constructor(
                             it.copy(
                                 errorMessage = result.error,
                                 isErrorDialogVisible = true,
-                                isLoading = false
+                                isLoading = false,
+                                isRefreshing = false
                             )
                         }
 
@@ -76,7 +80,8 @@ class GradeListViewModel @Inject constructor(
                         _state.update {
                             it.copy(
                                 gradeList = result.data ?: emptyList(),
-                                isLoading = false
+                                isLoading = false,
+                                isRefreshing = false
                             )
                         }
                     }

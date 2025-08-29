@@ -5,6 +5,7 @@ import com.ad_coding.plannettestapp.domain.model.ProductModel
 data class ProductListTwoState(
     val productList: List<ProductModel> = emptyList(),
     val isLoading: Boolean = true,
+    val isRefreshing: Boolean = false,
     val errorMessage: String? = null,
     val isErrorDialogVisible: Boolean = false
 )

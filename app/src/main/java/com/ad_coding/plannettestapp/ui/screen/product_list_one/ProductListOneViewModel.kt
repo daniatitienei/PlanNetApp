@@ -43,6 +43,9 @@ class ProductListOneViewModel @Inject constructor(
         when (event) {
             ProductListOneEvent.RefreshList ->
                 viewModelScope.launch {
+                    _state.update {
+                        it.copy(isRefreshing = true)
+                    }
                     refreshUseCase.requestRefresh()
                 }
 
@@ -71,6 +74,7 @@ class ProductListOneViewModel @Inject constructor(
                         _state.update {
                             it.copy(
                                 isLoading = false,
+                                isRefreshing = false,
                                 errorMessage = result.error,
                                 isErrorDialogVisible = true
                             )
@@ -81,6 +85,7 @@ class ProductListOneViewModel @Inject constructor(
                         _state.update {
                             it.copy(
                                 isLoading = false,
+                                isRefreshing = false,
                                 productList = result.data ?: emptyList(),
                                 isErrorDialogVisible = false
                             )

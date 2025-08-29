@@ -18,6 +18,7 @@ import com.ad_coding.plannettestapp.ui.screen.grade_list.GradeListEvent
 @Composable
 fun PullToRefresh(
     isRefreshing: Boolean,
+    isLoading: Boolean,
     onRefresh: () -> Unit,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
@@ -29,7 +30,7 @@ fun PullToRefresh(
             .zIndex(2f)
     ) {
         AnimatedContent(
-            targetState = isRefreshing,
+            targetState = isLoading,
             contentAlignment = Alignment.Center
         ) { isLoading ->
             if (isLoading) {
